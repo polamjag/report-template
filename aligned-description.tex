@@ -1,0 +1,19 @@
+\renewenvironment*{description}%
+  {\begin{list}{}{%
+        \let\makelabel\descriptionlabel%
+        \setlength\labelwidth{8em}
+        \setlength\itemsep{0.9em}%
+        \setlength\parsep{0pt}%
+        \setlength\leftmargin{\labelwidth+\labelsep}}}%
+  {\end{list}}
+
+\newlength{\currentlabelwidth}
+\renewcommand*\descriptionlabel[1]{%
+  \settowidth\currentlabelwidth{\textbf{#1}}%
+  \ifdim\currentlabelwidth>\leftmargin%
+  \parbox{\columnwidth-\labelsep}{\textbf{#1}}%
+  \else%
+  \textbf{#1}%
+  \fi%
+  \hfil%
+} 
